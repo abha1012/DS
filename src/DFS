@@ -1,0 +1,41 @@
+Public void DFSTREE(Node root)
+{
+    if(root == null)
+        return;
+        
+    DFSTREE(root.left);
+    System.out.println(root.data);
+    DFSTREE(root.right);
+ 
+}
+
+
+public void DFSGRAPH(int v)
+{
+    Boolean[] visited = new Boolean[V];
+    
+    for(int i=0; i<V; i++)
+    {
+        if(!visited[i])
+            DFSUtil(v, visited);
+    }
+    
+}
+
+public void DFSUtil(int v, boolean[] visited)
+{
+    visited[v] = true;
+    System.out.println(v);
+    
+    Iterator<Integer> it = adj[v].listIterator();
+    while(it.hasNext())
+    {
+        int n = it.next();
+        
+        if(!visited[n])
+        {
+            DFSUtil(n, visited);
+        }
+    
+    }
+}
